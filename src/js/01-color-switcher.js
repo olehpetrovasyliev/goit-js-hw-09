@@ -10,7 +10,6 @@ const colorChanger = () => {
     startBtn.disabled = true;
     stopBtn.disabled = false;
   }, 1000);
-  //  startBtn.removeEventListener('click', colorChanger);
 };
 startBtn.addEventListener('click', colorChanger);
 
