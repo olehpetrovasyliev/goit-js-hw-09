@@ -37,9 +37,22 @@ const options = {
 
         console.log(convertMs(diff));
         secondsSpan.textContent = convertMs(diff).seconds;
+        if (secondsSpan.textContent.length === 1) {
+          secondsSpan.textContent = '0' + secondsSpan.textContent;
+        }
         minutesSpan.textContent = convertMs(diff).minutes;
+        if (minutesSpan.textContent.length === 1) {
+          minutesSpan.textContent = '0' + minutesSpan.textContent;
+        }
         hoursSpan.textContent = convertMs(diff).hours;
+        if (hoursSpan.textContent.length === 1) {
+          hoursSpan.textContent = '0' + hoursSpan.textContent;
+        }
         daysSpan.textContent = convertMs(diff).days;
+        if (daysSpan.textContent.length === 1) {
+          daysSpan.textContent = '0' + daysSpan.textContent;
+        }
+        startBtn.disabled = true;
       }, 1000);
     };
 
