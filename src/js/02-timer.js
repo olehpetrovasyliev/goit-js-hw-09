@@ -22,7 +22,7 @@ const options = {
   minuteIncrement: 1,
   //
   onClose() {
-    const timerStart = flatpickr => {
+    const timerStart = () => {
       const timerId = setInterval(() => {
         let now = new Date();
         const deadline = new Date(picker.value);
