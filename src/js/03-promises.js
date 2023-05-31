@@ -25,15 +25,15 @@ function onSubmit(evt) {
     const position = i;
     // console.log(i);
     const timerId = setInterval(() => {
-      createPromise(position, delayInp)
-        .then(({ position, delayInp }) => {
+      createPromise(position, delay)
+        .then(({ position, delay }) => {
           Notiflix.Notify.success(
-            `✅ Fulfilled promise ${position} in ${delayInp}ms`
+            `✅ Fulfilled promise ${position} in ${delay}ms`
           );
         })
-        .catch(({ position, delayInp }) => {
+        .catch(({ position, delay }) => {
           Notiflix.Notify.failure(
-            `❌ Rejected promise ${position} in ${delayInp}ms`
+            `❌ Rejected promise ${position} in ${delay}ms`
           );
         });
       clearInterval(timerId);
