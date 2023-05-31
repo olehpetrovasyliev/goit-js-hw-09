@@ -15,30 +15,37 @@ function createPromise(position, delay) {
     }, delay);
   });
 }
-
 function onSubmit(evt) {
   evt.preventDefault();
   const delayInp = Number(evt.currentTarget.elements.delay.value);
   const amount = Number(evt.currentTarget.elements.amount.value);
   const step = Number(evt.currentTarget.elements.step.value);
-  for (let i = 1; i <= amount; i++) {
-    const position = i;
+  let totalDelay = 0;
+  for (let i = 0; i < amount; i++) {
+    let position = i + 1;
+    // delay += position;
     // console.log(i);
+
     const timerId = setInterval(() => {
-      createPromise(position, delay)
+      createPromise(position, step)
         .then(({ position, delay }) => {
           Notiflix.Notify.success(
-            `✅ Fulfilled promise ${position} in ${delay}ms`
+            `:white_check_mark: Fulfilled promise ${position} in ${
+              delay * position
+            }ms`
           );
         })
         .catch(({ position, delay }) => {
           Notiflix.Notify.failure(
-            `❌ Rejected promise ${position} in ${delay}ms`
+            `:x: Rejected promise ${position} in ${delay * position}ms`
           );
         });
+      console.log(totalDelay);
       clearInterval(timerId);
-    }, step);
+    }, Number(step * position));
   }
+  evt.currentTarget.elements.delay.value = '';
+  evt.currentTarget.elements.amount.value = '';
+  evt.currentTarget.elements.step.value = '';
 }
-
 form.addEventListener('submit', onSubmit);

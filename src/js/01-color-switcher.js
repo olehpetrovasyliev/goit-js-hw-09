@@ -5,10 +5,10 @@ let timerId = null;
 // body.style.backgroundColor = getRandomHexColor();
 
 const colorChanger = () => {
+  startBtn.disabled = true;
+  stopBtn.disabled = false;
   timerId = setInterval(() => {
     document.body.style.backgroundColor = getRandomHexColor();
-    startBtn.disabled = true;
-    stopBtn.disabled = false;
   }, 1000);
 };
 startBtn.addEventListener('click', colorChanger);
