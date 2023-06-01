@@ -29,16 +29,30 @@ function onSubmit(evt) {
     const timerId = setInterval(() => {
       createPromise(position, step)
         .then(({ position, delay }) => {
-          Notiflix.Notify.success(
-            `:white_check_mark: Fulfilled promise ${position} in ${
-              step + delay * position
-            }ms`
-          );
+          if (position === 1) {
+            Notiflix.Notify.success(
+              `&#9989 Fulfilled promise ${position} in ${delayInp}ms`
+            );
+          } else {
+            Notiflix.Notify.success(
+              `&#9989 Fulfilled promise ${position} in ${
+                delayInp + step * (position - 1)
+              }ms`
+            );
+          }
         })
         .catch(({ position, delay }) => {
-          Notiflix.Notify.failure(
-            `:x: Rejected promise ${position} in ${step + delay * position}ms`
-          );
+          if (position === 1) {
+            Notiflix.Notify.failure(
+              `&#10060 Rejected promise ${position} in ${delayInp}ms`
+            );
+          } else {
+            Notiflix.Notify.failure(
+              `&#10060 Rejected promise ${position} in ${
+                delayInp + step * (position - 1)
+              }ms`
+            );
+          }
         });
       console.log(totalDelay);
       clearInterval(timerId);
