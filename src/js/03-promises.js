@@ -31,13 +31,13 @@ function onSubmit(evt) {
         .then(({ position, delay }) => {
           Notiflix.Notify.success(
             `:white_check_mark: Fulfilled promise ${position} in ${
-              delay * position
+              step + delay * position
             }ms`
           );
         })
         .catch(({ position, delay }) => {
           Notiflix.Notify.failure(
-            `:x: Rejected promise ${position} in ${delay * position}ms`
+            `:x: Rejected promise ${position} in ${step + delay * position}ms`
           );
         });
       console.log(totalDelay);
